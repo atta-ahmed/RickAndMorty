@@ -22,6 +22,8 @@ class APIClient: APIClientProtocol {
         do {
             let urlRequest = try urlRequest(from: request)
             
+            print("------>", urlRequest.url)
+            
             URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
                 // Check error
                 if let error = error {
