@@ -42,7 +42,7 @@ class APIClient: APIClientProtocol {
                     let response = try JSONDecoder().decode(T.self, from: data)
                     completion(.success(response))
                 } catch {
-                    completion(.failure(NetworkError.canNotDecodeObject))
+                    completion(.failure(NetworkError.noData))
                 }
             }.resume()
             

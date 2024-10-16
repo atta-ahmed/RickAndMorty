@@ -32,7 +32,6 @@ class CharacterTableViewCell: UITableViewCell {
             hostingController.view.translatesAutoresizingMaskIntoConstraints = false
             contentView.addSubview(hostingController.view)
 
-            // Set up constraints for the hosting controller's view
             NSLayoutConstraint.activate([
                 hostingController.view.topAnchor.constraint(equalTo: contentView.topAnchor),
                 hostingController.view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
