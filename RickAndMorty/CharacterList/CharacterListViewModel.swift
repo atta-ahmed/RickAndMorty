@@ -22,65 +22,73 @@ protocol CharacterListViewModelProtocol {
 }
 
 class CharacterListViewModel: CharacterListViewModelProtocol {
-    private var charactersList: [Character]? = []
-    private var originalCharactersList: [Character]? = []
-
+    
+    private var charactersList: [Character] = []
+    private var originalCharactersList: [Character] = []
+    private var pageNumber = 1
+    private var isFetching = false // Track ongoing fetch requests
+    
+    var isFiltering: Bool = false
+    
     var onReciveCharacter: (() -> Void)?
     var onError: ((NetworkError) -> Void)?
-    var isFiltering: Bool = false
-
-    private var pageNumber = 1
-    
     
     var countOfCharcters: Int {
-        return charactersList?.count ?? 0
+        return charactersList.count
     }
 
+    // Retrieve character at index
     func character(at index: Int) -> Character? {
-        guard let charactersList = charactersList, index >= 0, index < charactersList.count else {
+        guard index >= 0, index < charactersList.count else {
             return nil
         }
         return charactersList[index]
     }
-    
-    func fetchCharacters() {
-        // Don't fetch while filtering
-        guard !isFiltering else { return }
 
-        APIClient.shared.request(request: CharacterRequest.charactersList(pageNumber: "\(pageNumber)")) { (result: Result<CharacterResponse?, NetworkError>) in
+    // Fetch characters from API (pagination supported)
+    func fetchCharacters() {
+        // Avoid duplicate fetching or fetches during filtering
+        guard !isFetching, !isFiltering else { return }
+        
+        isFetching = true // Set fetching state to true
+        APIClient.shared.request(
+            request: CharacterRequest.charactersList(pageNumber: "\(pageNumber)")
+        ) { [weak self] (result: Result<CharacterResponse?, NetworkError>) in
+            guard let self = self else { return }
+            
+            self.isFetching = false // Reset fetching state
             
             switch result {
             case .success(let response):
                 if let newCharacters = response?.results {
-                    
-                    self.originalCharactersList?.append(contentsOf: newCharacters)
+                    self.originalCharactersList.append(contentsOf: newCharacters)
                     self.charactersList = self.originalCharactersList
-                    self.pageNumber += 1 // Increment page for next fetch
+                    self.pageNumber += 1
                     self.onReciveCharacter?()
                 } else {
                     self.onError?(NetworkError.noData)
                 }
             case .failure(let error):
                 self.onError?(error)
-                print("error", error)
+                print("Error fetching characters:", error)
             }
         }
     }
-    
+
+    // Filter characters by status
     func filterCharacter(by status: CharacterStatus?, completion: @escaping () -> Void) {
-        
-        print("in view model filter", status)
-        // Set the flag to true if filtering
+        // Set the isFiltering flag to true if filtering
         isFiltering = status != nil
-        // Reset to original list if no specific status is provided
+        
         if let status = status {
-            charactersList = originalCharactersList?.filter { character in
+            charactersList = originalCharactersList.filter { character in
                 character.status?.rawValue == status.rawValue
             }
         } else {
+            // Reset if no filter
             charactersList = originalCharactersList
         }
+
         completion()
     }
-
 }
