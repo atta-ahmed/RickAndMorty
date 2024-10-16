@@ -19,7 +19,7 @@ struct Info: Codable {
     let prev: String?
 }
 
-enum CharacterStatus: String, Codable {
+enum CharacterStatus: String, Codable, CaseIterable {
     case alive = "Alive"
     case dead = "Dead"
     case unknown = "unknown"

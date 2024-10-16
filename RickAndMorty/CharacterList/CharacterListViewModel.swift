@@ -9,38 +9,52 @@ import Foundation
 
 protocol CharacterListViewModelProtocol {
     
-    var countOfCharcters: Int? { get }
+    var countOfCharcters: Int { get }
+    var isFiltering: Bool { get }
     
     func character(at index: Int) -> Character?
     func fetchCharacters()
     
     var onReciveCharacter:  (()-> Void)? { get set }
     var onError: ((NetworkError)-> Void)? { get set }
+    
+    func filterCharacter(by status: CharacterStatus?, completion: @escaping () -> Void)
 }
 
 class CharacterListViewModel: CharacterListViewModelProtocol {
     private var charactersList: [Character]? = []
-    
+    private var originalCharactersList: [Character]? = []
+
     var onReciveCharacter: (() -> Void)?
     var onError: ((NetworkError) -> Void)?
-    var pageNumber = 1
+    var isFiltering: Bool = false
+
+    private var pageNumber = 1
     
     
-    var countOfCharcters: Int? {
-        charactersList?.count
+    var countOfCharcters: Int {
+        return charactersList?.count ?? 0
     }
-    
+
     func character(at index: Int) -> Character? {
-        charactersList?[index]
+        guard let charactersList = charactersList, index >= 0, index < charactersList.count else {
+            return nil
+        }
+        return charactersList[index]
     }
     
     func fetchCharacters() {
+        // Don't fetch while filtering
+        guard !isFiltering else { return }
+
         APIClient.shared.request(request: CharacterRequest.charactersList(pageNumber: "\(pageNumber)")) { (result: Result<CharacterResponse?, NetworkError>) in
             
             switch result {
             case .success(let response):
                 if let newCharacters = response?.results {
-                    self.charactersList?.append(contentsOf: newCharacters)
+                    
+                    self.originalCharactersList?.append(contentsOf: newCharacters)
+                    self.charactersList = self.originalCharactersList
                     self.pageNumber += 1 // Increment page for next fetch
                     self.onReciveCharacter?()
                 } else {
@@ -52,4 +66,21 @@ class CharacterListViewModel: CharacterListViewModelProtocol {
             }
         }
     }
+    
+    func filterCharacter(by status: CharacterStatus?, completion: @escaping () -> Void) {
+        
+        print("in view model filter", status)
+        // Set the flag to true if filtering
+        isFiltering = status != nil
+        // Reset to original list if no specific status is provided
+        if let status = status {
+            charactersList = originalCharactersList?.filter { character in
+                character.status?.rawValue == status.rawValue
+            }
+        } else {
+            charactersList = originalCharactersList
+        }
+        completion()
+    }
+
 }
