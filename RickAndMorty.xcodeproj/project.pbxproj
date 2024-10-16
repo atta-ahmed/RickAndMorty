@@ -23,6 +23,9 @@
 		86651C862CBD9F6200A48167 /* CharacterListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86651C842CBD9F6200A48167 /* CharacterListViewController.xib */; };
 		866A5E752CBEF11F007F95ED /* CharacterCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866A5E742CBEF11F007F95ED /* CharacterCardView.swift */; };
 		866A5E772CBEF835007F95ED /* CharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866A5E762CBEF835007F95ED /* CharacterCell.swift */; };
+		866A5E7B2CBF1C01007F95ED /* CharacterDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866A5E792CBF1C01007F95ED /* CharacterDetailsViewController.swift */; };
+		866A5E7C2CBF1C01007F95ED /* CharacterDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 866A5E7A2CBF1C01007F95ED /* CharacterDetailsViewController.xib */; };
+		866A5E7E2CBFDFC9007F95ED /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866A5E7D2CBFDFC9007F95ED /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +66,9 @@
 		86651C842CBD9F6200A48167 /* CharacterListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterListViewController.xib; sourceTree = "<group>"; };
 		866A5E742CBEF11F007F95ED /* CharacterCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCardView.swift; sourceTree = "<group>"; };
 		866A5E762CBEF835007F95ED /* CharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell.swift; sourceTree = "<group>"; };
+		866A5E792CBF1C01007F95ED /* CharacterDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewController.swift; sourceTree = "<group>"; };
+		866A5E7A2CBF1C01007F95ED /* CharacterDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterDetailsViewController.xib; sourceTree = "<group>"; };
+		866A5E7D2CBFDFC9007F95ED /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,12 +129,14 @@
 		86651C4D2CBD9D2200A48167 /* RickAndMorty */ = {
 			isa = PBXGroup;
 			children = (
+				866A5E782CBF1BEA007F95ED /* CharacterDetails */,
 				862395332CBDA6EE00015BD9 /* NetworkHandler */,
 				86651C7E2CBD9D4200A48167 /* CharacterList */,
 				86651C4E2CBD9D2200A48167 /* AppDelegate.swift */,
 				86651C502CBD9D2200A48167 /* SceneDelegate.swift */,
 				86651C572CBD9D2400A48167 /* Assets.xcassets */,
 				86651C5C2CBD9D2400A48167 /* Info.plist */,
+				866A5E7D2CBFDFC9007F95ED /* Extensions.swift */,
 			);
 			path = RickAndMorty;
 			sourceTree = "<group>";
@@ -162,6 +170,15 @@
 				866A5E762CBEF835007F95ED /* CharacterCell.swift */,
 			);
 			path = CharacterList;
+			sourceTree = "<group>";
+		};
+		866A5E782CBF1BEA007F95ED /* CharacterDetails */ = {
+			isa = PBXGroup;
+			children = (
+				866A5E792CBF1C01007F95ED /* CharacterDetailsViewController.swift */,
+				866A5E7A2CBF1C01007F95ED /* CharacterDetailsViewController.xib */,
+			);
+			path = CharacterDetails;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,6 +285,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				866A5E7C2CBF1C01007F95ED /* CharacterDetailsViewController.xib in Resources */,
 				86651C862CBD9F6200A48167 /* CharacterListViewController.xib in Resources */,
 				86651C582CBD9D2400A48167 /* Assets.xcassets in Resources */,
 			);
@@ -299,8 +317,10 @@
 				86651C512CBD9D2200A48167 /* SceneDelegate.swift in Sources */,
 				866A5E772CBEF835007F95ED /* CharacterCell.swift in Sources */,
 				8623953B2CBE7FE100015BD9 /* CharacterListViewModel.swift in Sources */,
+				866A5E7B2CBF1C01007F95ED /* CharacterDetailsViewController.swift in Sources */,
 				862395392CBDB60900015BD9 /* RequestProtocol.swift in Sources */,
 				8623953D2CBE803100015BD9 /* CharacterModel.swift in Sources */,
+				866A5E7E2CBFDFC9007F95ED /* Extensions.swift in Sources */,
 				866A5E752CBEF11F007F95ED /* CharacterCardView.swift in Sources */,
 				862395362CBDA74000015BD9 /* APIClient.swift in Sources */,
 				862395372CBDA74000015BD9 /* NetworkError.swift in Sources */,
