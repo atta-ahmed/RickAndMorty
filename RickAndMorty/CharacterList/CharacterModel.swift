@@ -19,10 +19,16 @@ struct Info: Codable {
     let prev: String?
 }
 
+enum CharacterStatus: String, Codable {
+    case alive = "Alive"
+    case dead = "Dead"
+    case unknown = "unknown"
+}
+
 struct Character: Codable {
     let id: Int?
     let name: String?
-    let status: String?
+    let status: CharacterStatus?
     let species: String?
     let type: String?
     let gender: String?
@@ -31,13 +37,13 @@ struct Character: Codable {
     let image: String?
     let episode: [String]?
     let url: String?
-    let created: String? // You can change this to Date if you want to handle dates
+    let created: String?
     
     // Placeholder instance with default or dummy values
     static let placeholder = Character(
         id: nil,
         name: "Unknown Character", // Placeholder name
-        status: "Unknown",
+        status: CharacterStatus.unknown,
         species: "Unknown Species",
         type: nil,
         gender: "Unknown",
