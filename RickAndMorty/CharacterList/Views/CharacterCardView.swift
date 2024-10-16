@@ -43,11 +43,23 @@ struct CharacterCardView: View {
                 .padding(.top, 20)
                 Spacer()
             }
-        .border(Color(.gray), width: 1, cornerRadius: 12)
-        .background(character.status == "Alive" ? .mint : .white , cornerRadius: 12)
+        .border(.borderGrayColor, width: 1, cornerRadius: 12)
+        .background(backgroundColor(for: character.status) , cornerRadius: 12)
         .padding(.horizontal)
-        .padding(.vertical, 12)
-        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
+        .padding(.vertical, 6)
+    }
+    
+    private func backgroundColor(for status: CharacterStatus?) -> Color {
+        switch status {
+        case .alive:
+            return .aliveBGColor
+        case .dead:
+            return .deadBGColor
+        case .unknown:
+            return .white
+        case .none:
+            return .white
+        }
     }
 
 }

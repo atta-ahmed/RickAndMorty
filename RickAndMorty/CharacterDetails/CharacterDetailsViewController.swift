@@ -28,6 +28,10 @@ class CharacterDetailsViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.backgroundColor = .clear
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -45,7 +49,7 @@ class CharacterDetailsViewController: UIViewController {
                 imageView.contentMode = .scaleAspectFill
             }
             nameLabel.text = character.name ?? "Unknown"
-            statusLabel.text = character.status ?? "Unknown"
+            statusLabel.text = character.status?.rawValue ?? "Unknown"
             speciesLabel.text = character.species ?? "Unknown"
             genderLabel.text = character.gender
             locationLabel.text = character.location?.name ?? "Unknown"

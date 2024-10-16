@@ -28,8 +28,8 @@ class CharacterListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.largeTitleDisplayMode = .always // or .automatic
-        navigationItem.title = "Characters" // Set the title
+        navigationItem.largeTitleDisplayMode = .always
+        navigationItem.title = "Characters"
     }
     
     override func viewDidLoad() {

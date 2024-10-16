@@ -9,7 +9,8 @@ import Foundation
 
 enum CharacterRequest: RequestProtocol {
     
-    typealias ResponseType = CharacterResponse // Specify the response type
+    // Specify the response type
+    typealias ResponseType = CharacterResponse
     
     case charactersList(pageNumber: String)
     case characterDetails(characterId: String)
