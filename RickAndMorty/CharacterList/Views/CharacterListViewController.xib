@@ -41,24 +41,27 @@
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="lYh-rM-E4E">
                             <rect key="frame" x="16" y="21.000000000000004" width="289" height="38.333333333333343"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Le9-Cp-jzd">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Le9-Cp-jzd">
                                     <rect key="frame" x="0.0" y="0.0" width="75" height="38.333333333333336"/>
+                                    <color key="tintColor" systemColor="labelColor"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                     <connections>
                                         <action selector="didFilterPressed:" destination="-1" eventType="touchUpInside" id="Ca7-zM-LDU"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XsQ-ds-TAx">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XsQ-ds-TAx">
                                     <rect key="frame" x="83" y="0.0" width="75" height="38.333333333333336"/>
+                                    <color key="tintColor" systemColor="labelColor"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                     <connections>
                                         <action selector="didFilterPressed:" destination="-1" eventType="touchUpInside" id="DaZ-RC-6Gl"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1zu-RL-uO3">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1zu-RL-uO3">
                                     <rect key="frame" x="166" y="0.0" width="75" height="38.333333333333336"/>
+                                    <color key="tintColor" systemColor="labelColor"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                     <connections>
@@ -67,6 +70,7 @@
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="close" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Rm-eK-vNa">
                                     <rect key="frame" x="249" y="0.0" width="40" height="38.333333333333336"/>
+                                    <color key="tintColor" systemColor="labelColor"/>
                                     <buttonConfiguration key="configuration" style="gray"/>
                                     <connections>
                                         <action selector="didFilterPressed:" destination="-1" eventType="touchUpInside" id="cki-6s-nK6"/>
@@ -101,6 +105,9 @@
         </view>
     </objects>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

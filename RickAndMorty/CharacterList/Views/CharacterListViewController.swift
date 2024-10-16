@@ -14,24 +14,18 @@ class CharacterListViewController: UIViewController {
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet var filterButtons: [UIButton]!
     
+    // Track the currently selected button
+    private var selectedFilterButton: UIButton?
     var viewModel: CharacterListViewModelProtocol = CharacterListViewModel()
     var isLoading: Bool = false {
         didSet {
-            if isLoading {
-                print("====isLoading", isLoading)
-                loadingIndicator.startAnimating()
-            } else {
-                print("----isLoading", isLoading)
-                loadingIndicator.stopAnimating()
-            }
+            updateLoadingIndicator()
         }
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.largeTitleDisplayMode = .always
-        navigationItem.title = "Characters"
+        super.viewWillAppear(animated)
+        configureNavigationBar()
     }
     
     override func viewDidLoad() {
@@ -40,8 +34,10 @@ class CharacterListViewController: UIViewController {
         setupLoadingIndicator()
         fetchCharacters()
         setupViewModel()
-        setuFilterButtons()
+        setupFilterButtons()
     }
+    
+    // MARK: - Setup Methods
     
     private func setupTableView() {
         tableView.register(CharacterTableViewCell.self, forCellReuseIdentifier: CharacterTableViewCell.reuseIdentifier)
@@ -55,42 +51,24 @@ class CharacterListViewController: UIViewController {
         viewModel.fetchCharacters()
     }
     
-    
     private func setupViewModel() {
         viewModel.onReciveCharacter = { [weak self] in
-            print("-------onReciveCharacter -----")
-            DispatchQueue.main.async {
-                self?.tableView.reloadData()
-                self?.isLoading = false
-            }
+            self?.reloadData()
         }
         
-        viewModel.onError = { [weak self] (error: NetworkError) in
-            print("Error fetching orders:", error)
-            DispatchQueue.main.async {
-                self?.showErrorAlert(message: error.localizedDescription)
-                self?.isLoading = false
-            }
+        viewModel.onError = { [weak self] error in
+            self?.handleError(error)
         }
     }
     
-    private func setuFilterButtons() {
+    private func setupFilterButtons() {
         for (index, button) in filterButtons.enumerated() {
-            if index < CharacterStatus.allCases.count {
-                let status = CharacterStatus.allCases[index]
-                
-                // Set the button title
-                button.setTitle(status.rawValue, for: .normal)
-                
-                // Add rounded corners and border
-                button.layer.cornerRadius = 15
-                button.layer.borderWidth = 1.5
-                button.layer.borderColor = UIColor.gray.cgColor
-                button.layer.masksToBounds = true
-            }
+            guard index < CharacterStatus.allCases.count else { continue }
+            let status = CharacterStatus.allCases[index]
+            button.setTitle(status.rawValue, for: .normal)
+            styleFilterButton(button)
         }
     }
-    
     
     private func setupLoadingIndicator() {
         loadingIndicator.center = view.center
@@ -98,24 +76,80 @@ class CharacterListViewController: UIViewController {
         view.addSubview(loadingIndicator)
     }
     
+    private func styleFilterButton(_ button: UIButton) {
+        button.layer.cornerRadius = 15
+        button.layer.borderWidth = 1.5
+        button.layer.borderColor = UIColor.gray.cgColor
+        button.layer.masksToBounds = true
+    }
+    
+    private func updateLoadingIndicator() {
+        isLoading ? loadingIndicator.startAnimating() : loadingIndicator.stopAnimating()
+    }
+    
+    private func reloadData() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+            self.isLoading = false
+        }
+    }
+    
+    private func handleError(_ error: NetworkError) {
+        print("Error fetching characters:", error)
+        DispatchQueue.main.async {
+            self.showErrorAlert(message: error.localizedDescription)
+            self.isLoading = false
+        }
+    }
+    
+    private func configureNavigationBar() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
+        navigationItem.title = "Characters"
+    }
+    
     private func showErrorAlert(message: String) {
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
     }
+    
+    private func selectButton(_ button: UIButton) {
+        print("Selected button: \(button.title(for: .normal) ?? "")") // Debugging
+        button.backgroundColor = .lightGray // Change to your desired selected color
+        button.titleLabel?.textColor = .white
+        button.isUserInteractionEnabled = false // Disable interaction
+    }
+
+    private func deselectButton(_ button: UIButton) {
+        print("Deselected button: \(button.title(for: .normal) ?? "")") // Debugging
+        button.backgroundColor = .clear // Reset to original color
+        button.titleLabel?.textColor = .black
+        button.isUserInteractionEnabled = true // Enable interaction again
+    }
+    
+    // MARK: - Actions
     
     @IBAction func didFilterPressed(_ sender: UIButton) {
         let filterTitle = sender.title(for: .normal)
-        let status = CharacterStatus(rawValue: filterTitle ?? "") ?? nil
+        let status = CharacterStatus(rawValue: filterTitle ?? "")
+        
+        // Deselect the previously selected button
+        if let selectedButton = selectedFilterButton {
+            deselectButton(selectedButton)
+        }
+        
+        // Set the new selected button
+        selectedFilterButton = sender
+        selectButton(sender)
         
         viewModel.filterCharacter(by: status) { [weak self] in
-            DispatchQueue.main.async {
-                self?.isLoading = false
-                self?.tableView.reloadData()
-            }
+            self?.reloadData()
         }
     }
 }
+
+// MARK: - Delegate and DataSource
 
 extension CharacterListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
