@@ -13,6 +13,7 @@
 		8623953B2CBE7FE100015BD9 /* CharacterListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8623953A2CBE7FE100015BD9 /* CharacterListViewModel.swift */; };
 		8623953D2CBE803100015BD9 /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8623953C2CBE803100015BD9 /* CharacterModel.swift */; };
 		8623953F2CBE852100015BD9 /* CharacterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8623953E2CBE852100015BD9 /* CharacterRequest.swift */; };
+		8633B3D22CC1B53A00C0CF1A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8633B3D12CC1B53900C0CF1A /* README.md */; };
 		86651C4F2CBD9D2200A48167 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86651C4E2CBD9D2200A48167 /* AppDelegate.swift */; };
 		86651C512CBD9D2200A48167 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86651C502CBD9D2200A48167 /* SceneDelegate.swift */; };
 		86651C582CBD9D2400A48167 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86651C572CBD9D2400A48167 /* Assets.xcassets */; };
@@ -58,6 +59,7 @@
 		8623953A2CBE7FE100015BD9 /* CharacterListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewModel.swift; sourceTree = "<group>"; };
 		8623953C2CBE803100015BD9 /* CharacterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterModel.swift; sourceTree = "<group>"; };
 		8623953E2CBE852100015BD9 /* CharacterRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRequest.swift; sourceTree = "<group>"; };
+		8633B3D12CC1B53900C0CF1A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		86651C4B2CBD9D2200A48167 /* RickAndMorty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMorty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86651C4E2CBD9D2200A48167 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86651C502CBD9D2200A48167 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 		86651C422CBD9D2200A48167 = {
 			isa = PBXGroup;
 			children = (
+				8633B3D12CC1B53900C0CF1A /* README.md */,
 				86651C4D2CBD9D2200A48167 /* RickAndMorty */,
 				86651C642CBD9D2500A48167 /* RickAndMortyTests */,
 				86651C6E2CBD9D2500A48167 /* RickAndMortyUITests */,
@@ -321,6 +324,7 @@
 			files = (
 				866A5E7C2CBF1C01007F95ED /* CharacterDetailsViewController.xib in Resources */,
 				86651C862CBD9F6200A48167 /* CharacterListViewController.xib in Resources */,
+				8633B3D22CC1B53A00C0CF1A /* README.md in Resources */,
 				86651C582CBD9D2400A48167 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
