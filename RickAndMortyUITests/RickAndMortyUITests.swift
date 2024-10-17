@@ -2,7 +2,7 @@
 //  RickAndMortyUITests.swift
 //  RickAndMortyUITests
 //
-//  Created by Atta ElAshmawy, Vodafone on 14/10/2024.
+//  Created by Atta ElAshmawy on 14/10/2024.
 //
 
 import XCTest

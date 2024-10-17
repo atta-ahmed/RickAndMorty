@@ -2,7 +2,7 @@
 //  CharacterModel.swift
 //  RickAndMorty
 //
-//  Created by Atta ElAshmawy, Vodafone on 15/10/2024.
+//  Created by Atta ElAshmawy on 15/10/2024.
 //
 
 import Foundation
@@ -39,21 +39,33 @@ struct Character: Codable {
     let url: String?
     let created: String?
     
-    // Placeholder instance with default or dummy values
-    static let placeholder = Character(
-        id: nil,
-        name: "Unknown Character", // Placeholder name
-        status: CharacterStatus.unknown,
-        species: "Unknown Species",
-        type: nil,
-        gender: "Unknown",
-        origin: Origin(name: "Unknown Origin", url: nil),
-        location: Location(name: "Unknown Location", url: nil),
-        image: "placeholder_image_url", // Placeholder image URL
-        episode: nil,
-        url: nil,
-        created: nil
-    )
+    init(
+        id: Int? = nil,
+        name: String? = nil,
+        status: CharacterStatus? = nil,
+        species: String? = nil,
+        type: String? = nil,
+        gender: String? = nil,
+        origin: Origin? = nil,
+        location: Location? = nil,
+        image: String? = nil,
+        episode: [String]? = nil,
+        url: String? = nil,
+        created: String? = nil
+    ) {
+        self.id = id
+        self.name = name
+        self.status = status
+        self.species = species
+        self.type = type
+        self.gender = gender
+        self.origin = origin
+        self.location = location
+        self.image = image
+        self.episode = episode
+        self.url = url
+        self.created = created
+    }
 }
 
 struct Origin: Codable {

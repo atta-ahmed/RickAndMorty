@@ -2,7 +2,7 @@
 //  CharacterDetailsView.swift
 //  RickAndMorty
 //
-//  Created by Atta ElAshmawy, Vodafone on 17/10/2024.
+//  Created by Atta ElAshmawy on 17/10/2024.
 //
 
 import SwiftUI

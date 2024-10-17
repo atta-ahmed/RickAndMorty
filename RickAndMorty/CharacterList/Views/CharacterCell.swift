@@ -2,7 +2,7 @@
 //  CharacterCell.swift
 //  RickAndMorty
 //
-//  Created by Atta ElAshmawy, Vodafone on 15/10/2024.
+//  Created by Atta ElAshmawy on 15/10/2024.
 //
 
 import SwiftUI
@@ -25,7 +25,7 @@ class CharacterTableViewCell: UITableViewCell {
 
     private func setupHostingController() {
         // Create the hosting controller
-        let characterCardView = CharacterCardView(character: Character.placeholder)
+        let characterCardView = CharacterCardView(character: Character())
         hostingController = UIHostingController(rootView: characterCardView)
 
         if let hostingController = hostingController {
@@ -41,7 +41,6 @@ class CharacterTableViewCell: UITableViewCell {
         }
     }
 
-    // Method to update the cell content
     func configure(with character: Character) {
         hostingController?.rootView = CharacterCardView(character: character)
     }

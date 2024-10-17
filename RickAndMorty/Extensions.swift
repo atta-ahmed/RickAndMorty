@@ -2,7 +2,7 @@
 //  Extensions.swift
 //  RickAndMorty
 //
-//  Created by Atta ElAshmawy, Vodafone on 16/10/2024.
+//  Created by Atta ElAshmawy on 16/10/2024.
 //
 
 import Foundation

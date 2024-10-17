@@ -2,7 +2,7 @@
 //  CharacterListViewController.swift
 //  RickAndMorty
 //
-//  Created by Atta ElAshmawy, Vodafone on 15/10/2024.
+//  Created by Atta ElAshmawy on 15/10/2024.
 //
 
 import UIKit
@@ -16,11 +16,20 @@ class CharacterListViewController: UIViewController {
     // Track the currently selected button
     private var selectedFilterButton: UIButton?
     
-    private var viewModel: CharacterListViewModelProtocol = CharacterListViewModel()
-    var isLoading: Bool = false {
+    private var viewModel: CharacterListViewModelProtocol
+    private var isLoading: Bool = false {
         didSet {
             updateLoadingIndicator()
         }
+    }
+    
+    init(viewModel: CharacterListViewModelProtocol = CharacterListViewModel()) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,7 +47,6 @@ class CharacterListViewController: UIViewController {
     }
     
     // MARK: - Setup Methods
-    
     private func setupTableView() {
         tableView.register(CharacterTableViewCell.self, forCellReuseIdentifier: CharacterTableViewCell.reuseIdentifier)
         tableView.separatorStyle = .none
@@ -46,7 +54,7 @@ class CharacterListViewController: UIViewController {
         tableView.dataSource = self
     }
     
-    private func fetchCharacters() {
+    func fetchCharacters() {
         isLoading = true
         viewModel.fetchCharacters()
     }
@@ -95,7 +103,6 @@ class CharacterListViewController: UIViewController {
     }
     
     private func handleError(_ error: NetworkError) {
-        print("Error fetching characters:", error)
         DispatchQueue.main.async {
             self.showErrorAlert(message: error.localizedDescription)
             self.isLoading = false

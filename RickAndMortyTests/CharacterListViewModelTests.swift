@@ -2,68 +2,97 @@
 //  CharacterListViewModelTests.swift
 //  RickAndMortyTests
 //
-//  Created by Atta ElAshmawy, Vodafone on 17/10/2024.
+//  Created by Atta ElAshmawy on 17/10/2024.
 //
 
 import XCTest
 @testable import RickAndMorty
 
+
 final class CharacterListViewModelTests: XCTestCase {
     
     var viewModel: CharacterListViewModel!
-    var mockAPIClient: APIClientProtocol!
-
+    var mockAPIClient: MockAPIClient!
+    
     override func setUpWithError() throws {
-        let request = MockedCharactersRequest()
-        mockAPIClient = MockedAPIClient()
-        viewModel = CharacterListViewModel(apiClient: mockAPIClient, request: request)
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        mockAPIClient = MockAPIClient()
+        viewModel = CharacterListViewModel(apiClient: mockAPIClient)
     }
 
     func testFetchCharactersSuccess() {
-        let expectation = self.expectation(description: "Fetch Characters Fai")
-        var didReceiveCharacters = false
+        let mockResponse = CharacterResponse(info: nil, results: dummyCharacters)
+        mockAPIClient.dummyData = mockResponse
+        
+        let expectation = self.expectation(description: "Fetch Characters Success")
         
         viewModel.onReciveCharacter = {
-            didReceiveCharacters = true
             expectation.fulfill()
         }
         
         viewModel.fetchCharacters()
         
         waitForExpectations(timeout: 1, handler: nil)
-        XCTAssertTrue(didReceiveCharacters, "Expected to receive characters")
-        XCTAssertEqual(viewModel.countOfCharcters, 1, "Expected 1 character")
-        XCTAssertEqual(viewModel.character(at: 0)?.name, "Rick Sanchez" )
+        XCTAssertEqual(viewModel.countOfCharcters, 3)
+        XCTAssertEqual(viewModel.character(at: 0)?.name, "Rick Sanchez")
     }
     
     func testFetchCharactersError() {
-        let expectation = self.expectation(description: "Fetch Characters Fail")
+        let expectation = self.expectation(description: "Fetch Characters Error")
+        mockAPIClient.returnError = true
+        
         var didReceiveCharacters = false
         var responseError: NetworkError? = nil
         
-        viewModel.onReciveCharacter = {
-            didReceiveCharacters = true
-            expectation.fulfill()
-        }
-        
         viewModel.onError = { error in
-            didReceiveCharacters = false
             responseError = error
             expectation.fulfill()
         }
         
-        (mockAPIClient as? MockedAPIClient)?.returnError = true
-        
         viewModel.fetchCharacters()
         
         waitForExpectations(timeout: 1, handler: nil)
-        XCTAssertFalse(didReceiveCharacters, "Expected to didn't receive any characters")
+        XCTAssertFalse(didReceiveCharacters)
         XCTAssertEqual(responseError?.localizedDescription, "MockedAPIClient error test")
     }
+    
+    func testFilterCharactersByStatus() {
+        let mockResponse = CharacterResponse(info: nil, results: dummyCharacters)
+        let mockAPIClient = MockedAPIClient()
+        let viewModel = CharacterListViewModel(apiClient: mockAPIClient)
+        
+        mockAPIClient.dummyData = mockResponse
 
+        viewModel.fetchCharacters()
+        
+        // Filter by 'alive' status
+        let filterExpectation = expectation(description: "Filter Characters by Status")
+        let resetFilterExpectation = expectation(description: "Reset Character Filter")
+
+        viewModel.filterCharacter(by: .alive) {
+            filterExpectation.fulfill()
+        }
+        
+        wait(for: [filterExpectation], timeout: 1)
+
+        // Verify filtered results
+        XCTAssertEqual(viewModel.countOfCharcters, 2)
+        XCTAssertEqual(viewModel.character(at: 0)?.name, "Rick Sanchez")
+        XCTAssertEqual(viewModel.character(at: 1)?.name, "Morty")
+        
+        // Reset the filter and verify all characters are shown again
+        viewModel.filterCharacter(by: nil) {
+            resetFilterExpectation.fulfill()
+        }
+        wait(for: [resetFilterExpectation], timeout: 1)
+
+        XCTAssertEqual(viewModel.countOfCharcters, 3)
+    }
 
 }
+
+// mocked characters
+let dummyCharacters = [
+    Character(id: 1, name: "Rick Sanchez", status: .alive, species: "Human", gender: "Male"),
+    Character(id: 2, name: "Morty", status: .alive, species: "Human", gender: "Male"),
+    Character(id: 3, name: "Birdperson", status: .dead, species: "Bird", gender: "Male")
+]

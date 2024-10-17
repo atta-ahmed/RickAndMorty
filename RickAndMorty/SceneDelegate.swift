@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  RickAndMorty
 //
-//  Created by Atta ElAshmawy, Vodafone on 14/10/2024.
+//  Created by Atta ElAshmawy on 14/10/2024.
 //
 
 import UIKit
@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = scene as? UIWindowScene else { return }
         window = UIWindow(windowScene: windowScene)
 
-        let characterListVC = CharacterListViewController(nibName: "CharacterListViewController", bundle: nil)
+        let characterListVC = CharacterListViewController()
         window?.rootViewController = UINavigationController(rootViewController: characterListVC)
         window?.makeKeyAndVisible()
     }
