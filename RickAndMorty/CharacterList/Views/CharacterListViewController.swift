@@ -10,12 +10,14 @@ import SwiftUI
 
 class CharacterListViewController: UIViewController {
     
+    // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet var filterButtons: [UIButton]!
     // Track the currently selected button
     private var selectedFilterButton: UIButton?
     
+    // MARK: - Varaibls
     private var viewModel: CharacterListViewModelProtocol
     private var isLoading: Bool = false {
         didSet {
@@ -23,6 +25,7 @@ class CharacterListViewController: UIViewController {
         }
     }
     
+    // MARK: - Initilizer
     init(viewModel: CharacterListViewModelProtocol = CharacterListViewModel()) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -32,6 +35,7 @@ class CharacterListViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - LifeCycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureNavigationBar()
@@ -52,11 +56,6 @@ class CharacterListViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
-    }
-    
-    func fetchCharacters() {
-        isLoading = true
-        viewModel.fetchCharacters()
     }
     
     private func setupViewModel() {
@@ -89,6 +88,12 @@ class CharacterListViewController: UIViewController {
         button.layer.borderWidth = 1.5
         button.layer.borderColor = UIColor.gray.cgColor
         button.layer.masksToBounds = true
+    }
+    
+    // MARK: - Helpers
+    func fetchCharacters() {
+        isLoading = true
+        viewModel.fetchCharacters()
     }
     
     private func updateLoadingIndicator() {
@@ -134,7 +139,6 @@ class CharacterListViewController: UIViewController {
     }
     
     // MARK: - Actions
-    
     @IBAction func didFilterPressed(_ sender: UIButton) {
         let filterTitle = sender.title(for: .normal)
         let status = CharacterStatus(rawValue: filterTitle ?? "")
@@ -155,7 +159,6 @@ class CharacterListViewController: UIViewController {
 }
 
 // MARK: - Delegate and DataSource
-
 extension CharacterListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.countOfCharcters
@@ -175,8 +178,8 @@ extension CharacterListViewController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let character = viewModel.character(at: indexPath.row) else { return }
-        showCharacterDetail(character: character)
-        // showCharacterDetails(character: character)
+        showCharacterDetail(character: character) // navigate to SwiftUI
+        // showCharacterDetails(character: character) // navigate to UIKit
     }
     
     // navigate to SwiftUI

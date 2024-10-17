@@ -14,21 +14,21 @@ enum CharacterRequest: RequestProtocol {
     
     case charactersList(pageNumber: String)
     case characterDetails(characterId: String)
-
+    
     var baseURL: String {
-    "https://rickandmortyapi.com/api/"
+        "https://rickandmortyapi.com/api/"
     }
-
+    
     var endPoint: String {
         switch self {
         case .charactersList(let pageNumber):
             return "character/?page=\(pageNumber)"
-
+            
         case .characterDetails(let characterId):
             return "product/\(characterId)"
         }
     }
-
+    
     var method: HTTPMethod { .get }
     
     var headers: HTTPHeaders? {

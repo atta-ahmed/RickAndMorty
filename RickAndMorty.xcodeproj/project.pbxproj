@@ -141,13 +141,13 @@
 		86651C4D2CBD9D2200A48167 /* RickAndMorty */ = {
 			isa = PBXGroup;
 			children = (
+				86651C5C2CBD9D2400A48167 /* Info.plist */,
+				86651C572CBD9D2400A48167 /* Assets.xcassets */,
 				866A5E782CBF1BEA007F95ED /* CharacterDetails */,
 				862395332CBDA6EE00015BD9 /* NetworkHandler */,
 				86651C7E2CBD9D4200A48167 /* CharacterList */,
 				86651C4E2CBD9D2200A48167 /* AppDelegate.swift */,
 				86651C502CBD9D2200A48167 /* SceneDelegate.swift */,
-				86651C572CBD9D2400A48167 /* Assets.xcassets */,
-				86651C5C2CBD9D2400A48167 /* Info.plist */,
 				866A5E7D2CBFDFC9007F95ED /* Extensions.swift */,
 			);
 			path = RickAndMorty;

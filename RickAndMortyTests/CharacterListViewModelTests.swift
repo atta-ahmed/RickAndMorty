@@ -14,7 +14,7 @@ final class CharacterListViewModelTests: XCTestCase {
     var viewModel: CharacterListViewModel!
     var mockAPIClient: MockAPIClient!
     
-    override func setUpWithError() throws {
+    override func setUp() {
         mockAPIClient = MockAPIClient()
         viewModel = CharacterListViewModel(apiClient: mockAPIClient)
     }
@@ -57,7 +57,7 @@ final class CharacterListViewModelTests: XCTestCase {
     
     func testFilterCharactersByStatus() {
         let mockResponse = CharacterResponse(info: nil, results: dummyCharacters)
-        let mockAPIClient = MockedAPIClient()
+        let mockAPIClient = MockAPIClient()
         let viewModel = CharacterListViewModel(apiClient: mockAPIClient)
         
         mockAPIClient.dummyData = mockResponse
@@ -86,6 +86,12 @@ final class CharacterListViewModelTests: XCTestCase {
         wait(for: [resetFilterExpectation], timeout: 1)
 
         XCTAssertEqual(viewModel.countOfCharcters, 3)
+    }
+    
+    override func tearDown() {
+        mockAPIClient = nil
+        viewModel = nil
+        super.tearDown()
     }
 
 }
