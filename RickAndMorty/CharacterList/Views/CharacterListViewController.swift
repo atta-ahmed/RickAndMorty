@@ -169,18 +169,23 @@ extension CharacterListViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let detailsVC = CharacterDetailsViewController()
-//        detailsVC.character = viewModel.character(at: indexPath.row)
-//        navigationController?.pushViewController(detailsVC, animated: true)
         guard let character = viewModel.character(at: indexPath.row) else { return }
         showCharacterDetail(character: character)
+        // showCharacterDetails(character: character)
     }
     
-    // Call this when a character is selected in the list
+    // navigate to SwiftUI
     func showCharacterDetail(character: Character) {
         let detailView = CharacterDetailView(character: character)
         let hostingController = UIHostingController(rootView: detailView)
         self.navigationController?.pushViewController(hostingController, animated: true)
+    }
+    
+    // navigate to UIKit
+    func showCharacterDetails(character: Character) {
+        let detailsVC = CharacterDetailsViewController()
+        detailsVC.character = character
+        navigationController?.pushViewController(detailsVC, animated: true)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

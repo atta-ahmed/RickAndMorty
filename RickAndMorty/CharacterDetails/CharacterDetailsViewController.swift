@@ -50,25 +50,10 @@ class CharacterDetailsViewController: UIViewController {
             }
             nameLabel.text = character.name ?? "Unknown"
             statusLabel.text = character.status?.rawValue ?? "Unknown"
-            speciesLabel.text = character.species ?? "Unknown"
+            speciesLabel.text = (character.species ?? "Unknown") + " • "
             genderLabel.text = character.gender
             locationLabel.text = character.location?.name ?? "Unknown"
             print("---in CharacterDetails----", character)
-        }
-    }
-}
-
-extension UIImageView {
-    func loadImage(from url: URL) {
-        DispatchQueue.global().async { [weak self] in
-            // Fetch the image data from the URL
-            if let data = try? Data(contentsOf: url),
-               let image = UIImage(data: data) {
-                DispatchQueue.main.async {
-                    // Set the image to the UIImageView on the main thread
-                    self?.image = image
-                }
-            }
         }
     }
 }

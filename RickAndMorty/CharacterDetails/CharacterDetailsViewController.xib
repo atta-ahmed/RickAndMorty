@@ -40,14 +40,8 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WuA-iB-VjW">
-                    <rect key="frame" x="40.333333333333336" y="397.66666666666669" width="6" height="24"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Male" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="icY-LG-SW5">
-                    <rect key="frame" x="51.333333333333343" y="404.66666666666669" width="36.666666666666657" height="20.333333333333314"/>
+                    <rect key="frame" x="39.333333333333343" y="404.66666666666669" width="36.666666666666657" height="20.333333333333314"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" systemColor="secondaryLabelColor"/>
                     <nil key="highlightedColor"/>
@@ -93,14 +87,12 @@
                 <constraint firstItem="ftk-DH-eHF" firstAttribute="leading" secondItem="uA5-GD-54H" secondAttribute="leading" id="5tb-GB-iTX"/>
                 <constraint firstItem="uA5-GD-54H" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="6Xg-qu-IaP"/>
                 <constraint firstItem="Qlt-gg-Rwf" firstAttribute="top" secondItem="ftk-DH-eHF" secondAttribute="bottom" constant="32" id="861-ua-j0x"/>
-                <constraint firstItem="WuA-iB-VjW" firstAttribute="top" secondItem="uA5-GD-54H" secondAttribute="bottom" constant="1" id="BIY-6e-qCU"/>
                 <constraint firstItem="irc-rU-5K5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Bcf-QJ-psH"/>
-                <constraint firstItem="WuA-iB-VjW" firstAttribute="leading" secondItem="ftk-DH-eHF" secondAttribute="trailing" constant="5" id="G5K-Q7-xLe"/>
                 <constraint firstItem="3ts-42-nBn" firstAttribute="top" secondItem="uA5-GD-54H" secondAttribute="top" id="Giz-qO-gyn"/>
+                <constraint firstItem="icY-LG-SW5" firstAttribute="leading" secondItem="ftk-DH-eHF" secondAttribute="trailing" constant="4" id="HNJ-zv-7up"/>
                 <constraint firstItem="ftk-DH-eHF" firstAttribute="top" secondItem="uA5-GD-54H" secondAttribute="bottom" constant="8" symbolic="YES" id="Pce-nM-hw0"/>
                 <constraint firstItem="cP8-6c-7rl" firstAttribute="top" secondItem="Qlt-gg-Rwf" secondAttribute="top" id="QdV-vQ-Zrf"/>
                 <constraint firstItem="Qlt-gg-Rwf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="RUK-rc-pg7"/>
-                <constraint firstItem="icY-LG-SW5" firstAttribute="leading" secondItem="WuA-iB-VjW" secondAttribute="trailing" constant="5" id="S99-qi-9by"/>
                 <constraint firstItem="irc-rU-5K5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="VWS-Hf-oqv"/>
                 <constraint firstItem="cP8-6c-7rl" firstAttribute="leading" secondItem="Qlt-gg-Rwf" secondAttribute="trailing" constant="16" id="Zcv-a1-mFO"/>
                 <constraint firstItem="icY-LG-SW5" firstAttribute="top" secondItem="ftk-DH-eHF" secondAttribute="top" id="mYo-u2-BBF"/>
