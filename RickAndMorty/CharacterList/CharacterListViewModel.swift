@@ -23,15 +23,23 @@ protocol CharacterListViewModelProtocol {
 
 class CharacterListViewModel: CharacterListViewModelProtocol {
     
+    private let apiClient: APIClientProtocol
+    private let request: RequestProtocol?
     private var charactersList: [Character] = []
     private var originalCharactersList: [Character] = []
     private var pageNumber = 1
-    private var isFetching = false // Track ongoing fetch requests
-    
+    // Track ongoing fetch requests
+    private var isFetching = false
+
     var isFiltering: Bool = false
     
     var onReciveCharacter: (() -> Void)?
     var onError: ((NetworkError) -> Void)?
+
+    init(apiClient: APIClientProtocol = APIClient.shared, request: RequestProtocol? = nil) {
+        self.apiClient = apiClient
+        self.request = request
+    }
     
     var countOfCharcters: Int {
         return charactersList.count
@@ -49,14 +57,16 @@ class CharacterListViewModel: CharacterListViewModelProtocol {
     func fetchCharacters() {
         // Avoid duplicate fetching or fetches during filtering
         guard !isFetching, !isFiltering else { return }
-        
         isFetching = true // Set fetching state to true
-        APIClient.shared.request(
-            request: CharacterRequest.charactersList(pageNumber: "\(pageNumber)")
-        ) { [weak self] (result: Result<CharacterResponse?, NetworkError>) in
+
+        let characterListRequest = request ?? CharacterRequest.charactersList(pageNumber: "\(pageNumber)")
+        
+        apiClient.request(request: characterListRequest) {
+            [weak self] (result: Result<CharacterResponse?, NetworkError>) in
             guard let self = self else { return }
             
-            self.isFetching = false // Reset fetching state
+            // Reset fetching state
+            self.isFetching = false
             
             switch result {
             case .success(let response):
@@ -79,7 +89,6 @@ class CharacterListViewModel: CharacterListViewModelProtocol {
     func filterCharacter(by status: CharacterStatus?, completion: @escaping () -> Void) {
         // Set the isFiltering flag to true if filtering
         isFiltering = status != nil
-        
         if let status = status {
             charactersList = originalCharactersList.filter { character in
                 character.status?.rawValue == status.rawValue

@@ -13,10 +13,10 @@ class CharacterListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet var filterButtons: [UIButton]!
-    
     // Track the currently selected button
     private var selectedFilterButton: UIButton?
-    var viewModel: CharacterListViewModelProtocol = CharacterListViewModel()
+    
+    private var viewModel: CharacterListViewModelProtocol = CharacterListViewModel()
     var isLoading: Bool = false {
         didSet {
             updateLoadingIndicator()
@@ -115,17 +115,15 @@ class CharacterListViewController: UIViewController {
     }
     
     private func selectButton(_ button: UIButton) {
-        print("Selected button: \(button.title(for: .normal) ?? "")") // Debugging
-        button.backgroundColor = .lightGray // Change to your desired selected color
+        button.backgroundColor = .lightGray
         button.titleLabel?.textColor = .white
-        button.isUserInteractionEnabled = false // Disable interaction
+        button.isUserInteractionEnabled = false
     }
 
     private func deselectButton(_ button: UIButton) {
-        print("Deselected button: \(button.title(for: .normal) ?? "")") // Debugging
-        button.backgroundColor = .clear // Reset to original color
+        button.backgroundColor = .clear
         button.titleLabel?.textColor = .black
-        button.isUserInteractionEnabled = true // Enable interaction again
+        button.isUserInteractionEnabled = true
     }
     
     // MARK: - Actions
@@ -193,7 +191,7 @@ extension CharacterListViewController: UITableViewDelegate, UITableViewDataSourc
         let contentHeight = scrollView.contentSize.height
         
         if offsetY > contentHeight - scrollView.frame.size.height {
-            // stop pagination if view still loading or in isLoading mode
+            // stop pagination if view still loading or in isFiltering mode
             if !isLoading, !viewModel.isFiltering {
                 fetchCharacters()
             }

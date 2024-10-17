@@ -27,6 +27,10 @@
 		866A5E7C2CBF1C01007F95ED /* CharacterDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 866A5E7A2CBF1C01007F95ED /* CharacterDetailsViewController.xib */; };
 		866A5E7E2CBFDFC9007F95ED /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866A5E7D2CBFDFC9007F95ED /* Extensions.swift */; };
 		866A5E812CC06593007F95ED /* CharacterDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866A5E802CC06593007F95ED /* CharacterDetailsView.swift */; };
+		866A5E832CC12B58007F95ED /* CharacterListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866A5E822CC12B58007F95ED /* CharacterListViewModelTests.swift */; };
+		866A5E852CC12BCF007F95ED /* MockedAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866A5E842CC12BCF007F95ED /* MockedAPIClient.swift */; };
+		866A5E882CC15BA1007F95ED /* CharacterList.json in Resources */ = {isa = PBXBuildFile; fileRef = 866A5E862CC1494D007F95ED /* CharacterList.json */; };
+		866A5E8A2CC19766007F95ED /* MockedRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866A5E892CC19766007F95ED /* MockedRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +75,10 @@
 		866A5E7A2CBF1C01007F95ED /* CharacterDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterDetailsViewController.xib; sourceTree = "<group>"; };
 		866A5E7D2CBFDFC9007F95ED /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		866A5E802CC06593007F95ED /* CharacterDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsView.swift; sourceTree = "<group>"; };
+		866A5E822CC12B58007F95ED /* CharacterListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewModelTests.swift; sourceTree = "<group>"; };
+		866A5E842CC12BCF007F95ED /* MockedAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedAPIClient.swift; sourceTree = "<group>"; };
+		866A5E862CC1494D007F95ED /* CharacterList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CharacterList.json; sourceTree = "<group>"; };
+		866A5E892CC19766007F95ED /* MockedRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +155,10 @@
 			isa = PBXGroup;
 			children = (
 				86651C652CBD9D2500A48167 /* RickAndMortyTests.swift */,
+				866A5E822CC12B58007F95ED /* CharacterListViewModelTests.swift */,
+				866A5E842CC12BCF007F95ED /* MockedAPIClient.swift */,
+				866A5E862CC1494D007F95ED /* CharacterList.json */,
+				866A5E892CC19766007F95ED /* MockedRequest.swift */,
 			);
 			path = RickAndMortyTests;
 			sourceTree = "<group>";
@@ -306,6 +318,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				866A5E882CC15BA1007F95ED /* CharacterList.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +357,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				866A5E852CC12BCF007F95ED /* MockedAPIClient.swift in Sources */,
+				866A5E832CC12B58007F95ED /* CharacterListViewModelTests.swift in Sources */,
+				866A5E8A2CC19766007F95ED /* MockedRequest.swift in Sources */,
 				86651C662CBD9D2500A48167 /* RickAndMortyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
