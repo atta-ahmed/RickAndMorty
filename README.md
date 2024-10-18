@@ -45,7 +45,7 @@ The test suite will execute and report the results in the Test Navigator panel.
 
 - View models are injected into view controllers to improve testability and adhere to the MVVM architecture pattern.
 
-- RequestProtocol & CharacterRequest: We use a RequestProtocol to standardize how network requests are structured across the app. The CharacterRequest enum encapsulates all API calls related to character data. This enum provides a clean and easy-to-read structure for handling different endpoints.
+- Used RequestProtocol to standardize how network requests are structured across the app. and CharacterRequest enum encapsulates all API calls related to character data. This enum provides a clean and easy-to-read structure for handling different endpoints.
 
 - The CharacterDetails view is implemented using SwiftUI to demonstrate SwiftUI integration in a UIKit-based project.
  
