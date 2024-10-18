@@ -31,7 +31,6 @@
 		866A5E832CC12B58007F95ED /* CharacterListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866A5E822CC12B58007F95ED /* CharacterListViewModelTests.swift */; };
 		866A5E852CC12BCF007F95ED /* MockAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866A5E842CC12BCF007F95ED /* MockAPIClient.swift */; };
 		866A5E882CC15BA1007F95ED /* CharacterList.json in Resources */ = {isa = PBXBuildFile; fileRef = 866A5E862CC1494D007F95ED /* CharacterList.json */; };
-		866A5E8A2CC19766007F95ED /* MockRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866A5E892CC19766007F95ED /* MockRequest.swift */; };
 		866A5E8D2CC19F81007F95ED /* MockCharacterListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866A5E8C2CC19F81007F95ED /* MockCharacterListViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -81,7 +80,6 @@
 		866A5E822CC12B58007F95ED /* CharacterListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewModelTests.swift; sourceTree = "<group>"; };
 		866A5E842CC12BCF007F95ED /* MockAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIClient.swift; sourceTree = "<group>"; };
 		866A5E862CC1494D007F95ED /* CharacterList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CharacterList.json; sourceTree = "<group>"; };
-		866A5E892CC19766007F95ED /* MockRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRequest.swift; sourceTree = "<group>"; };
 		866A5E8C2CC19F81007F95ED /* MockCharacterListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCharacterListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -211,7 +209,6 @@
 			isa = PBXGroup;
 			children = (
 				866A5E862CC1494D007F95ED /* CharacterList.json */,
-				866A5E892CC19766007F95ED /* MockRequest.swift */,
 				866A5E8C2CC19F81007F95ED /* MockCharacterListViewModel.swift */,
 				866A5E842CC12BCF007F95ED /* MockAPIClient.swift */,
 			);
@@ -374,7 +371,6 @@
 			files = (
 				866A5E852CC12BCF007F95ED /* MockAPIClient.swift in Sources */,
 				866A5E832CC12B58007F95ED /* CharacterListViewModelTests.swift in Sources */,
-				866A5E8A2CC19766007F95ED /* MockRequest.swift in Sources */,
 				86651C662CBD9D2500A48167 /* CharacterListViewControllerTests.swift in Sources */,
 				866A5E8D2CC19F81007F95ED /* MockCharacterListViewModel.swift in Sources */,
 			);

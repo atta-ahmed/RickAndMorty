@@ -21,12 +21,6 @@ class CharacterListViewControllerTests: XCTestCase {
         viewController.loadViewIfNeeded()
     }
 
-    override func tearDown() {
-        viewController = nil
-        mockViewModel = nil
-        super.tearDown()
-    }
-
     func testFetchCharacters() {
         mockViewModel.simulateFetchingCharacters()
         
@@ -60,5 +54,11 @@ class CharacterListViewControllerTests: XCTestCase {
         
         // Verify that another fetch is triggered
         XCTAssertTrue(mockViewModel.didFetchCharacters)
+    }
+    
+    override func tearDown() {
+        viewController = nil
+        mockViewModel = nil
+        super.tearDown()
     }
 }

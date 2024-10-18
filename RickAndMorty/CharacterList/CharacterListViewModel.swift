@@ -56,7 +56,6 @@ class CharacterListViewModel: CharacterListViewModelProtocol {
         // Ensure fetching is reset
         defer { isFetching = false }
         
-        // Update request with the current page number (if applicable)
         if var paginatedRequest = request as? CharacterRequest {
             paginatedRequest = .charactersList(pageNumber: "\(pageNumber)")
             request = paginatedRequest
