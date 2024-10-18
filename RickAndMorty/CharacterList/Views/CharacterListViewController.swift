@@ -119,6 +119,12 @@ class CharacterListViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
         navigationItem.title = "Characters"
+        
+        // Set scroll appearance to prevent title from overlapping the filter view
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .white
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
     }
     
     private func showErrorAlert(message: String) {
