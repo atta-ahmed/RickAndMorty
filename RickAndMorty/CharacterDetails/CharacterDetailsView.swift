@@ -55,11 +55,11 @@ struct CharacterDetailView: View {
                     // Status view aligned on the right
                     VStack {
                         Text("\(character.status?.rawValue ?? "unknown")")
-                            .font(.caption)
-                            .foregroundColor(.white)
+                            .font(.title3)
+                            .foregroundColor(.black)
                             .padding(.vertical, 4)
                             .padding(.horizontal, 8)
-                            .background(Color.blue)
+                            .background(Color.blueBGColor)
                             .cornerRadius(10)
                     }
                 }

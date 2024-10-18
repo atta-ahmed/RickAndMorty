@@ -66,5 +66,6 @@ extension Color {
     static let borderGrayColor = Color(red: 0.919, green: 0.919, blue: 0.919)
     static let aliveBGColor = Color(red: 0.917, green: 0.965, blue: 0.991)
     static let deadBGColor = Color(red: 1.0, green: 0.902, blue: 0.921)
+    static let blueBGColor = Color(red: 0.0118, green: 0.729, blue: 0.988)
 }
 
