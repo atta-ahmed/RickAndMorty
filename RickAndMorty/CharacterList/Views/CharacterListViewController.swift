@@ -115,6 +115,7 @@ class CharacterListViewController: UIViewController {
     }
     
     private func configureNavigationBar() {
+        navigationController?.isNavigationBarHidden = false
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
         navigationItem.title = "Characters"
@@ -179,7 +180,7 @@ extension CharacterListViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let character = viewModel.character(at: indexPath.row) else { return }
         showCharacterDetail(character: character) // navigate to SwiftUI
-        // showCharacterDetails(character: character) // navigate to UIKit
+//      showCharacterDetails(character: character) // navigate to UIKit
     }
     
     // navigate to SwiftUI
